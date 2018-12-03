@@ -12,4 +12,4 @@
 
 - name: Register GitLab Runner
   import_tasks: register-runner.yml
-  when: gitlab_runner_registration_token != ''
+  when: gitlab_runner_registration_token is defined

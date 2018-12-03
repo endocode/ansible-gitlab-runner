@@ -10,15 +10,11 @@
   shell: bash /tmp/gitlab-runner.script.deb.sh
   become: true
 
-- set_fact:
+- name: Set Fact if Gitlab Package Runner Version is set
+  set_fact:
     gitlab_runner_package: "{{ gitlab_runner_package_name }}={{ gitlab_runner_package_version }}"
     gitlab_runner_package_state: "present"
   when: gitlab_runner_package_version is defined
-
-- set_fact:
-    gitlab_runner_package: "{{ gitlab_runner_package_name }}"
-    gitlab_runner_package_state: "latest"
-  when: gitlab_runner_package_version is not defined
 
 - name: Install GitLab Runner
   apt:
